@@ -1,14 +1,20 @@
-# GitHub Pages Starter
+# Simple Portfolio (Card Grid) for GitHub Pages
 
-이 폴더의 파일 두 개만 레포지토리에 올리면 바로 GitHub Pages로 배포할 수 있어요.
+- 카드형 포트폴리오 레이아웃
+- 이미지 업로드 & 보관 (브라우저 **IndexedDB**에 저장)
+- 검색 / 태그 필터 / 추가·수정·삭제
+- 데이터 **내보내기(.json) / 가져오기(.json)** 지원 → 다른 브라우저/컴퓨터로 옮길 수 있어요
 
-## 업로드 순서
-1) GitHub에서 새 레포지토리 생성 — 이름이 개인 사이트면 `사용자이름.github.io`
-2) `index.html`과 `style.css` 업로드 → Commit
-3) Settings → Pages → Branch: `main` 지정 → Save
-4) 회복 후 `https://사용자이름.github.io` 또는 `https://사용자이름.github.io/레포이름` 접속
+## 파일
+- `index.html` — 마크업/레이아웃
+- `style.css` — 스타일
+- `app.js` — 로직 (IndexedDB, 업로드, 렌더링)
 
-## 커스터마이즈 팁
-- `index.html`의 About/Work/Contact 섹션을 본인 정보로 변경
-- 색상 값은 `style.css`의 `:root` 변수에서 변경
-- 메일 주소는 `hello@example.com`을 본인 주소로 교체
+## 사용법
+1. 이 세 파일을 레포지토리에 업로드하고 GitHub Pages를 켭니다.
+2. 사이트에 접속 후, 우상단 **+ 작품 추가**로 카드 생성
+3. 이미지는 브라우저에 저장됩니다. 저장 공간/보안 이유로 서버에 직접 올리진 않아요.
+4. 다른 기기로 옮길 땐 **내보내기**(JSON) → 새 기기에서 **가져오기** 하세요.
+
+> 참고: GitHub Pages는 정적 호스팅이라 서버에 파일을 업로드할 수 없습니다.  
+> 서버 업로드를 원하면 Cloudinary/Firebase 같은 외부 스토리지를 연결하거나, GitHub API로 커밋하는 백엔드(토큰 보안 필요)가 있어야 합니다.

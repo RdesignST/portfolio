@@ -3,55 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>나의 첫 GitHub Pages</title>
-  <meta name="description" content="GitHub Pages로 만든 나만의 첫 웹사이트" />
+  <title>포트폴리오 · 카드형</title>
+  <meta name="description" content="GitHub Pages용 심플 포트폴리오 카드 레이아웃 · 이미지 업로드 지원 (IndexedDB 보관)" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container">
-    <header>
-      <h1>Welcome to R design studio </h1>
-      <p class="lead"> Markup designer <strong> Rijin's Portfolio</strong></p>
-    </header>
+  <a class="skip-link" href="#content">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <div class="container row space">
+      <h1 class="logo">My <span>Portfolio</span></h1>
+      <nav class="actions">
+        <button id="btn-add" class="btn primary" aria-haspopup="dialog">+ 작품 추가</button>
+        <button id="btn-export" class="btn">내보내기</button>
+        <label class="btn file-label">
+          가져오기
+          <input id="import-input" type="file" accept="application/json" hidden />
+        </label>
+      </nav>
+    </div>
+    <div class="container">
+      <div class="toolbar">
+        <input id="search" class="input" type="search" placeholder="제목·태그 검색" aria-label="검색" />
+        <div class="tag-filter" id="tagFilter" aria-live="polite"></div>
+      </div>
+    </div>
+  </header>
 
-    <section class="card">
-      <h2>지금 바로 수정해서 포트폴리오로</h2>
-      <p>아래 버튼을 누르면 이 텍스트를 바꿔보세요. 저장하면 즉시 반영돼요.</p>
-      <button id="action">텍스트 바꾸기</button>
-      <p id="editable" class="mt">이곳을 내 소개로 바꾸면 포트폴리오의 첫 섹션이 됩니다 ✨</p>
+  <main id="content" class="container">
+    <section id="grid" class="grid" aria-label="작품 목록">
+      <!-- JS가 카드들을 채웁니다 -->
     </section>
-
-    <section class="grid">
-      <div class="tile">
-        <h3>About</h3>
-        <p>UI/UX 디자이너. 접근성, 디자인 시스템, 프로토타이핑에 관심이 많아요.</p>
-      </div>
-      <div class="tile">
-        <h3>Work</h3>
-        <p>최근 작업들을 카드 형태로 나열해 보세요. 썸네일 이미지를 추가해도 좋아요.</p>
-      </div>
-      <div class="tile">
-        <h3>Contact</h3>
-        <p><a href="mailto:hello@example.com">hello@example.com</a></p>
-      </div>
-    </section>
-
-    <footer>
-      <small>© <span id="year"></span> Your Name · Hosted on GitHub Pages</small>
-    </footer>
+    <p id="emptyState" class="muted" hidden>아직 등록된 작품이 없어요. 오른쪽 상단의 <strong>+ 작품 추가</strong>를 눌러 첫 카드를 만들어 보세요.</p>
   </main>
 
-  <script>
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-    const btn = document.getElementById('action');
-    const editable = document.getElementById('editable');
-    if (btn && editable) {
-      btn.addEventListener('click', () => {
-        const text = prompt('바꿀 내용을 입력하세요:', editable.textContent.trim());
-        if (text !== null) editable.textContent = text;
-      });
-    }
-  </script>
+  <!-- Dialog: Add/Edit Project -->
+  <dialog id="editor" class="dialog">
+    <form method="dialog" id="projectForm">
+      <header class="dialog-header">
+        <h2 id="dialogTitle">작품 추가</h2>
+        <button type="button" class="icon-btn" id="closeDialog" aria-label="닫기">✕</button>
+      </header>
+      <div class="dialog-body">
+        <div class="form-row">
+          <label for="title">제목</label>
+          <input id="title" name="title" class="input" required maxlength="120" placeholder="예: Mobile Payment App" />
+        </div>
+        <div class="form-row">
+          <label for="desc">설명</label>
+          <textarea id="desc" name="desc" class="input" rows="3" placeholder="핵심 역할, 문제·해결, 성과 등을 짧게 작성"></textarea>
+        </div>
+        <div class="form-row">
+          <label for="tags">태그 (쉼표로 구분)</label>
+          <input id="tags" name="tags" class="input" placeholder="UI, 접근성, 디자인시스템" />
+        </div>
+        <div class="form-row">
+          <label>이미지</label>
+          <div id="drop" class="drop" tabindex="0" aria-label="이미지 드래그 앤 드롭 영역. 클릭하여 파일 선택.">
+            <input id="image" type="file" accept="image/*" hidden />
+            <div class="drop-inner">
+              <div id="preview" class="preview" aria-live="polite">이미지 미리보기 없음</div>
+              <div class="drop-cta">
+                <button type="button" id="chooseImage" class="btn">파일 선택</button>
+                <p class="hint">JPG/PNG/SVG/GIF, 권장 8MB 이하</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="dialog-footer">
+        <button type="button" class="btn plain" id="deleteBtn" hidden>삭제</button>
+        <div class="spacer"></div>
+        <button type="submit" class="btn primary" id="saveBtn">저장</button>
+      </footer>
+      <input type="hidden" id="projectId" />
+    </form>
+  </dialog>
+
+  <template id="cardTemplate">
+    <article class="card">
+      <div class="thumb-wrap">
+        <img class="thumb" alt="" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <h3 class="card-title"></h3>
+        <p class="card-desc"></p>
+        <div class="card-tags"></div>
+      </div>
+      <div class="card-actions">
+        <button class="btn small" data-action="edit">수정</button>
+        <button class="btn small plain" data-action="delete">삭제</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
 </body>
 </html>
