@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>나의 첫 GitHub Pages</title>
+  <meta name="description" content="GitHub Pages로 만든 나만의 첫 웹사이트" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>안녕하세요 👋</h1>
+      <p class="lead">이건 <strong>GitHub Pages</strong>로 만든 첫 웹사이트예요.</p>
+    </header>
+
+    <section class="card">
+      <h2>지금 바로 수정해서 포트폴리오로</h2>
+      <p>아래 버튼을 누르면 이 텍스트를 바꿔보세요. 저장하면 즉시 반영돼요.</p>
+      <button id="action">텍스트 바꾸기</button>
+      <p id="editable" class="mt">이곳을 내 소개로 바꾸면 포트폴리오의 첫 섹션이 됩니다 ✨</p>
+    </section>
+
+    <section class="grid">
+      <div class="tile">
+        <h3>About</h3>
+        <p>UI/UX 디자이너. 접근성, 디자인 시스템, 프로토타이핑에 관심이 많아요.</p>
+      </div>
+      <div class="tile">
+        <h3>Work</h3>
+        <p>최근 작업들을 카드 형태로 나열해 보세요. 썸네일 이미지를 추가해도 좋아요.</p>
+      </div>
+      <div class="tile">
+        <h3>Contact</h3>
+        <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <small>© <span id="year"></span> Your Name · Hosted on GitHub Pages</small>
+    </footer>
+  </main>
+
+  <script>
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+    const btn = document.getElementById('action');
+    const editable = document.getElementById('editable');
+    if (btn && editable) {
+      btn.addEventListener('click', () => {
+        const text = prompt('바꿀 내용을 입력하세요:', editable.textContent.trim());
+        if (text !== null) editable.textContent = text;
+      });
+    }
+  </script>
+</body>
+</html>
