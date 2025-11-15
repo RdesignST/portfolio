@@ -65,7 +65,7 @@ body {
 
 /* 이름 + 역할 (하나의 텍스트 박스, line-height 150%) */
 .name-block {
-  margin: 0 0 56px 0; /* 역할 ~ 첫 info 줄 56 */
+  margin: 0 0 0 0; /* 역할 ~ 첫 info 줄 56 */
   line-height: 1.5;   /* 150% */
   font-size: 0;       /* inline 요소 사이 공백 제거 */
 }
@@ -134,47 +134,20 @@ body {
 
 
 /* =========================
-   Projects 페이지
+   2. 프로젝트 카드 (두 번째 페이지)
    ========================= */
 
-/* Projects 카드 (검정 프레임) */
 .card-projects {
   width: min(var(--card-width), 100% - 2rem);
   height: var(--card-height);
   border-radius: 40px;
-  background-color: var(--color-project-card);
-  padding-top: 40px; /* 제목을 위한 기본 패딩 */
-  padding-left: 48px;
-  padding-right: 48px;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
 }
 
-/* Projects 제목 */
-.projects-title {
-  font-size: 40px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-}
-
-/* Restart + Close 버튼 배치 */
-.projects-header-buttons {
-  position: absolute;
-  top: 40px;
-  right: 48px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* 슬라이드 영역 (그레이 박스) */
+/* 슬라이드 프레임 (검은 바깥 프레임) */
 .slide-frame-wrapper {
-  width: 890px;   /* ← 수정됨 */
-  height: 567px;  /* ← 수정됨 */
-  background: #a9a9a9; /* 그레이 영역 (임시) */
-  margin: 118px auto 0 auto; /* ← 위쪽 여백 118px */
+  width: var(--slide-width);
+  height: var(--slide-height);
+  max-width: 100%;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
