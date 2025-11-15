@@ -208,19 +208,23 @@ body {
 
 /* X 버튼 (36 x 36) */
 .close-btn {
-  width: 36px;
+  width: 36px;     /* 버튼 크기 = 아이콘 크기 */
   height: 36px;
-  background-color: var(--color-button-accent);
-  border-radius: 18px;
+  padding: 0;
+  background: none;     /* 배경 제거 */
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.close-btn img {
-  width: 16px;
-  height: 16px;
+.close-icon {
+  width: 36px;
+  height: 36px;
+  display: block;
 }
+
 
 
 /* =========================
