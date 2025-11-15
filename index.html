@@ -19,42 +19,56 @@
 
 <body class="min-h-screen bg-white flex items-center justify-center px-4 py-8">
 
-  <!-- 고정 카드: 크기는 CSS에서 관리 (card-main 클래스) -->
-  <div class="card-main bg-[#FFD27A] flex flex-col items-center justify-center">
+  <!-- 고정 노란 카드 (높이 720 고정) -->
+  <div class="card-main bg-[#FFD27A]">
 
-    <!-- (선택) 상단 장식 바 -->
-    <div class="w-[437px] max-w-[70%] h-3 bg-[#807C7C] rounded-full mb-10"></div>
+    <!-- 상단 회색 바 (폭 416, 높이 12, 라운드 없음, 카드 상단에 고정) -->
+    <div class="top-bar"></div>
 
-    <!-- 텍스트 블록 -->
-    <div class="text-center px-8 max-w-[640px] mx-auto">
-      <!-- 메인 타이틀 -->
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+    <!-- 내용 영역 -->
+    <div class="content-main">
+
+      <!-- 타이틀 -->
+      <h1 class="title-main">
         PORTFOLIO
       </h1>
 
       <!-- 이름 -->
-      <p class="text-2xl md:text-3xl font-semibold mb-4">
+      <p class="name-main">
         Rijin Choi
       </p>
 
-      <!-- 소개 텍스트 -->
-      <p class="text-lg md:text-2xl mb-1">
-        UI/UX Engineering, Design
-      </p>
-      <p class="text-lg md:text-xl mb-1">
-        Japanese, Korean, English
-      </p>
-      <p class="text-lg md:text-xl mb-10">
-        Languages, Tools: Figma, HTML, CSS, JavaScript
+      <!-- 역할 -->
+      <p class="role-main">
+        UI UX engineer, designer
       </p>
 
-      <!-- View Projects 버튼 -->
-      <a
-        href="projects.html"
-        class="btn-pill btn-primary"
-      >
-        View Projects
-      </a>
+      <!-- 정보 블록 (아이콘 + 텍스트 2줄) -->
+      <div class="info-block">
+
+        <!-- 줄 1: can communicate with -->
+        <div class="info-row info-text">
+          <img src="icon_Comment.svg" alt="" class="info-icon" />
+          <span class="info-label">can communicate with:&nbsp;</span>
+          <span class="info-value">Korean, Japanese, English</span>
+        </div>
+
+        <!-- 줄 2: Skills -->
+        <div class="info-row info-text">
+          <img src="icon_Autofix.svg" alt="" class="info-icon" />
+          <span class="info-label">Skills:&nbsp;</span>
+          <span class="info-value">Figma, Adobe, HTML, CSS, Javascript</span>
+        </div>
+
+      </div>
+
+      <!-- 버튼 -->
+      <div class="btn-wrapper">
+        <a href="projects.html" class="btn-pill btn-primary">
+          View Projects
+        </a>
+      </div>
+
     </div>
   </div>
 
