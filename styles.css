@@ -56,24 +56,28 @@ body {
 .title-main {
   font-size: 72px;
   font-weight: 800; /* ExtraBold */
-  line-height: 1.2;
-  margin: 0 0 48px 0; /* 타이틀 ~ 이름 간격 48 */
+  line-height: 1;   /* Figma에서 line-height: auto 느낌 */
+  margin: 0 0 48px 0; /* 타이틀 ~ 이름 블록 간격 48 */
+}
+
+/* 이름 + 역할 블록 (같은 텍스트 박스) */
+.name-block {
+  margin: 0 0 56px 0;   /* 역할(두 번째 줄) ~ info 블록 간격 56 */
+  line-height: 1.5;     /* 150% */
 }
 
 /* 이름 */
 .name-main {
+  display: block;
   font-size: 40px;
   font-weight: 700;
-  line-height: 1.2;
-  margin: 0 0 56px 0; /* 이름 ~ 역할 간격 56 */
 }
 
 /* 역할 텍스트 (UI UX engineer, designer) */
 .role-main {
+  display: block;
   font-size: 32px;
   font-weight: 400;
-  line-height: 1.2;
-  margin: 0 0 56px 0; /* 역할 ~ 첫 정보 라인 간격 56 */
 }
 
 /* 정보 블록 전체 (아이콘 2줄 + 버튼 위 여백 100) */
