@@ -174,10 +174,10 @@ body {
 /* 카드 안에서 Y = 109, 가로 960, 세로 611, 중앙 정렬 */
 .slide-frame-wrapper {
   position: absolute;
-  top: 109px;          /* 카드 상단에서 109px 아래 */
+  top: 80px;          /* 카드 상단에서 109px 아래 */
   left: 50%;
   transform: translateX(-50%);
-  width: 960px;
+  width: 900px;
   height: 611px;
   border-radius: 18px;
   overflow: hidden;
