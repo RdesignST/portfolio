@@ -1,25 +1,6 @@
-/* 기본 폰트 */
-body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-}
-
-/* 공통 변수 */
-:root {
-  --card-width: 960px;
-  --card-height: 720px;
-  ...
-}
-
-/* 메인 카드 */
-.card-main {
-  width: min(var(--card-width), 100% - 2rem);
-  height: var(--card-height);
-  border-radius: 40px;
-  position: relative;
-  overflow: hidden;
-}
-
+/* =========================
+   0. 기본 설정
+   ========================= */
 
 /* 기본 폰트 */
 body {
@@ -41,10 +22,12 @@ body {
   --color-button-accent: #ffd27a;
 }
 
+
 /* =========================
    1. 메인 카드 (첫 페이지)
    ========================= */
 
+/* 노란 카드 */
 .card-main {
   width: min(var(--card-width), 100% - 2rem);
   height: var(--card-height); /* 720 고정 */
@@ -81,14 +64,14 @@ body {
 /* PORTFOLIO 타이틀 (Bold) */
 .title-main {
   font-size: 72px;
-  font-weight: 600; /* Bold */
+  font-weight: 700;  /* Bold */
   line-height: 1;
   margin: 0 0 48px 0; /* 타이틀 ~ 이름블록 48 */
 }
 
 /* 이름 + 역할 (하나의 텍스트 박스, line-height 150%) */
 .name-block {
-  margin: 0 0 0 0; /* 역할 ~ 첫 info 줄 56 */
+  margin: 0 0 56px 0; /* 역할 ~ 첫 info 줄 56 */
   line-height: 1.5;   /* 150% */
   font-size: 0;       /* inline 요소 사이 공백 제거 */
 }
@@ -97,7 +80,7 @@ body {
 .name-main {
   display: block;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.5;
 }
 
@@ -111,7 +94,6 @@ body {
 
 /* 아이콘 포함 정보 블록 전체 (두 줄 + 버튼 위 간격) */
 .info-block {
-  margin-top: 56px;
   margin-bottom: 100px; /* 두 번째 줄 끝 ~ 버튼 100 */
 }
 
@@ -161,60 +143,68 @@ body {
    2. 프로젝트 카드 (두 번째 페이지)
    ========================= */
 
+/* 검은 Projects 카드 */
 .card-projects {
   width: min(var(--card-width), 100% - 2rem);
   height: var(--card-height);  /* 720 */
   border-radius: 40px;
   position: relative;
   overflow: hidden;
+  background-color: var(--color-project-card);
 }
 
-
-/* 슬라이드 프레임 (Projects 페이지용) */
-/* 카드 안에서 Y = 109, 가로 960, 세로 611, 중앙 정렬 */
-.slide-frame-wrapper {
-  position: absolute;
-  top: 109px;          /* 카드 상단에서 109px 아래 */
-  left: 50%;           /* 카드의 50% 위치로 이동 */
-  transform: translateX(-50%);  /* 정확히 가운데 맞추기 */
-  width: 900px;
-  height: 569px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #000;    /* 임시 */
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
-}
-
-/* Projects 카드 상단 영역 전체 */
+/* 상단 0~109px 영역 전체를 헤더로 사용 */
 .projects-header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 72px; /* 검정 상단 영역의 높이 (원하는 만큼 조정 가능) */
+  height: 109px;               /* 슬라이드 top 과 동일 */
   display: flex;
-  align-items: center;      /* ← 수직 가운데 정렬 */
-  justify-content: center;  /* ← 제목 가운데 */
+  align-items: center;          /* 상하 중앙 정렬 */
+  justify-content: center;      /* 타이틀 가로 중앙 정렬 */
 }
+
+/* 오른쪽 버튼 그룹 */
 .projects-header-buttons {
   position: absolute;
-  right: 48px;    /* 카드 오른쪽 여백 */
+  right: 48px;                  /* 카드 오른쪽 여백 */
   top: 50%;
-  transform: translateY(-50%);  /* 상하 중앙 */
+  transform: translateY(-50%);  /* 헤더 높이 기준 상하 중앙 */
   display: flex;
   align-items: center;
-  gap: 12px;      /* 버튼 간격 */
+  gap: 12px;                    /* 버튼 간격 */
 }
+
+/* 슬라이드 프레임 (카드 안에서 Y = 109, 중앙 정렬) */
+.slide-frame-wrapper {
+  position: absolute;
+  top: 109px;                        /* 카드 상단에서 109px 아래 */
+  left: 50%;                         /* 카드의 50% 위치로 이동 */
+  transform: translateX(-50%);       /* 정확히 가운데 맞추기 */
+  width: var(--slide-width);         /* 900px */
+  height: var(--slide-height);       /* 569px */
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* Restart 버튼 (높이 36px 고정) */
 .btn-accent {
   background-color: var(--color-button-accent);
   color: var(--color-project-card);
-  height: 36px;         /* ← 높이 고정 */
-  padding: 0 16px;      /* 좌우 패딩 */
+  height: 36px;
+  padding: 0 16px;
   display: flex;
-  align-items: center;  /* 수직 중앙 */
+  align-items: center;
+  justify-content: center;
   font-size: 15px;
   border-radius: 18px;  /* 36px 높이에 맞는 pill */
+  font-weight: 600;
 }
+
+/* X 버튼 (36 x 36) */
 .close-btn {
   width: 36px;
   height: 36px;
@@ -224,17 +214,18 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .close-btn img {
   width: 16px;
   height: 16px;
 }
 
 
-
 /* =========================
-   3. 버튼 공통 스타일
+   3. 공통 버튼 스타일
    ========================= */
 
+/* 메인 View Projects 버튼용 (첫 페이지) */
 .btn-pill {
   padding: 0.75rem 2rem;
   border-radius: 9999px;
@@ -257,12 +248,7 @@ body {
   background-color: #000000;
 }
 
-/* 포인트(노랑) 버튼 (Restart 등) */
-.btn-accent {
-  background-color: var(--color-button-accent);
-  color: var(--color-project-card);
-}
-
+/* Restart 버튼 hover 효과 */
 .btn-accent:hover {
   filter: brightness(0.95);
 }
