@@ -8,7 +8,10 @@
   <!-- Inter + fallback -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,47 +22,55 @@
 
 <body class="min-h-screen bg-white flex items-center justify-center px-4 py-8">
 
-  <div class="card-projects bg-[#242424] text-white flex flex-col px-10 pt-10 pb-8">
+  <!-- 검은 Projects 카드 -->
+  <div class="card-projects text-white bg-[#242424] relative">
 
-    <!-- 상단 영역 (Projects 중앙 정렬) -->
-    <div class="relative mb-8">
-
-      <!-- 가운데 정렬된 타이틀 -->
-      <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-center">
+    <!-- 상단 타이틀 -->
+    <div class="flex items-center justify-center pt-8 px-12 relative">
+      <h1 class="projects-title text-3xl md:text-4xl font-bold tracking-tight">
         Projects
       </h1>
 
       <!-- 오른쪽 상단 버튼들 -->
-      <div class="flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2">
-        <!-- Restart (슬라이드 처음으로) -->
+      <div class="projects-header-buttons flex items-center gap-3 absolute right-12 top-1/2 -translate-y-1/2">
+        <!-- Restart 버튼 (슬라이드 처음으로) -->
         <button
           id="firstSlideBtn"
-          class="btn-pill btn-accent"
           type="button"
+          class="btn-pill btn-accent text-sm md:text-base"
         >
           Restart
         </button>
 
-        <!-- X 아이콘 (닫기 = 포트폴리오 홈으로) -->
-        <a href="index.html"
-           class="w-10 h-10 flex items-center justify-center bg-[#FFD27A] rounded-full hover:brightness-90 transition">
-          <img src="icon_close.svg" alt="Close" class="w-5 h-5" />
-        </a>
+        <!-- X 아이콘 (닫기 = index.html로 이동) -->
+        <button
+          type="button"
+          onclick="location.href='index.html'"
+          class="w-10 h-10 flex items-center justify-center bg-[#FFD27A] rounded-full hover:brightness-90 transition"
+          aria-label="Close and go back to portfolio"
+        >
+          <img src="icon_close.svg" alt="" class="w-5 h-5" />
+        </button>
       </div>
     </div>
 
-    <!-- 슬라이드 뷰어 영역 -->
-    <div class="flex-1 flex items-center justify-center">
-      <div class="slide-frame-wrapper bg-black">
-
-        <!-- 네가 준 iframe 그대로 사용 -->
-       <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS23s4kDuy0U77YRiGIhNaxCnlwa9qQeWSJQGiTASzZQ-QyoKaD7aAXcC7C5rDo6b9d0qHUUkaa2_Fp/pubembed?start=true&loop=false&delayms=30000" frameborder="0" width="950" height="599" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-      </div>
+    <!-- 슬라이드 영역: 카드 안에서 Y = 109px, 가로 960, 세로 611 -->
+    <div class="slide-frame-wrapper bg-black">
+      <iframe
+        id="slideFrame"
+        src="https://docs.google.com/presentation/d/e/2PACX-1vS23s4kDuy0U77YRiGIhNaxCnlwa9qQeWSJQGiTASzZQ-QyoKaD7aAXcC7C5rDo6b9d0qHUUkaa2_Fp/pubembed?start=true&loop=false&delayms=30000"
+        frameborder="0"
+        allowfullscreen="true"
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+        style="border:0; width:100%; height:100%;"
+      ></iframe>
     </div>
+
   </div>
 
   <script>
-    // Restart 버튼 → 슬라이드 처음으로
+    // Restart 버튼 → 슬라이드 첫 페이지로
     const firstSlideBtn = document.getElementById('firstSlideBtn');
     const slideFrame = document.getElementById('slideFrame');
 
