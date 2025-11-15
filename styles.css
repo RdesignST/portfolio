@@ -201,7 +201,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 18px;
   border-radius: 18px;  /* 36px 높이에 맞는 pill */
   font-weight: 600;
 }
