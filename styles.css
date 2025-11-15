@@ -4,7 +4,7 @@ body {
     sans-serif;
 }
 
-/* 디자인 전체에서 쓰는 기본 값들 */
+/* 공통 변수 */
 :root {
   --card-width: 960px;
   --card-height: 720px;
@@ -18,16 +18,19 @@ body {
   --color-button-accent: #ffd27a;
 }
 
-/* 메인 카드 */
+/* =========================
+   1. 메인 카드 (첫 페이지)
+   ========================= */
+
 .card-main {
   width: min(var(--card-width), 100% - 2rem);
-  height: var(--card-height);
+  height: var(--card-height); /* 720 고정 */
   border-radius: 40px;
   position: relative;
   overflow: hidden;
 }
 
-/* 회색 바 */
+/* 상단 회색 바 (폭 416, 높이 12, 중앙 고정) */
 .top-bar {
   position: absolute;
   top: 0;
@@ -38,12 +41,13 @@ body {
   background-color: #807c7c;
 }
 
-/* 본문 */
+/* 내용 영역 */
 .content-main {
-  padding-top: 60px; /* 12 + 48 */
+  /* 카드 상단(0) + 회색바(12) + 바~타이틀 간격(48) = 60 */
+  padding-top: 60px;
   padding-left: 48px;
   padding-right: 48px;
-  padding-bottom: 140px;
+  padding-bottom: 140px; /* 버튼 아래 ~ 카드 하단 140 */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -51,18 +55,19 @@ body {
   text-align: center;
 }
 
-/* PORTFOLIO (굵기 Bold 로 변경) */
+/* PORTFOLIO 타이틀 (Bold) */
 .title-main {
   font-size: 72px;
-  font-weight: 700; /* ← 800에서 700으로 변경 */
+  font-weight: 700; /* Bold */
   line-height: 1;
-  margin: 0 0 48px 0; /* 아래 간격 48 */
+  margin: 0 0 48px 0; /* 타이틀 ~ 이름블록 48 */
 }
 
-/* 이름 + 역할 (한 텍스트박스, line-height 150%) */
+/* 이름 + 역할 (하나의 텍스트 박스, line-height 150%) */
 .name-block {
-  margin: 0 0 56px 0; /* 역할~Info 첫줄 간격 56 */
-  line-height: 1.5;
+  margin: 0 0 56px 0; /* 역할 ~ 첫 info 줄 56 */
+  line-height: 1.5;   /* 150% */
+  font-size: 0;       /* inline 요소 사이 공백 제거 */
 }
 
 /* 이름 */
@@ -70,6 +75,7 @@ body {
   display: block;
   font-size: 40px;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 /* 역할 */
@@ -77,40 +83,41 @@ body {
   display: block;
   font-size: 32px;
   font-weight: 400;
+  line-height: 1.5;
 }
 
-/* 정보 블록 전체 */
+/* 아이콘 포함 정보 블록 전체 (두 줄 + 버튼 위 간격) */
 .info-block {
-  margin-bottom: 100px; /* 두 줄 끝~버튼 100 */
+  margin-bottom: 100px; /* 두 번째 줄 끝 ~ 버튼 100 */
 }
 
-/* 각 줄 */
+/* 각 줄 (아이콘 + 텍스트) */
 .info-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0; /* 줄 간 블록간격 없음 → Figma 스펙 */
+  margin: 0; /* 줄 간 block 간격 없음 */
 }
 
-/* 두 줄 사이 line-height만 적용되도록 */
+/* 두 줄 사이 별도 margin 없이, line-height만으로 간격 */
 .info-row + .info-row {
-  margin-top: 0px; /* 줄 사이 간격 없음 */
+  margin-top: 0;
 }
 
-/* 정보 텍스트 */
+/* 정보 텍스트 공통 */
 .info-text {
   font-size: 20px;
   line-height: 1.8; /* 180% */
 }
 
-/* 아이콘 */
+/* 아이콘 32 x 32, 텍스트와 8px 간격 */
 .info-icon {
   width: 32px;
   height: 32px;
-  margin-right: 8px; /* 8픽셀 간격 */
+  margin-right: 8px;
 }
 
-/* 레이블 Bold, 값 Regular */
+/* 레이블(Bold) + 값(Regular) */
 .info-label {
   font-weight: 600;
 }
@@ -119,20 +126,24 @@ body {
   font-weight: 400;
 }
 
-/* 버튼 wrapper */
+/* 버튼 래퍼 (가운데 정렬) */
 .btn-wrapper {
   display: flex;
   justify-content: center;
 }
 
-/* 프로젝트 카드 (두 번째 페이지) */
+
+/* =========================
+   2. 프로젝트 카드 (두 번째 페이지)
+   ========================= */
+
 .card-projects {
   width: min(var(--card-width), 100% - 2rem);
   height: var(--card-height);
   border-radius: 40px;
 }
 
-/* 슬라이드 프레임 */
+/* 슬라이드 프레임 (검은 바깥 프레임) */
 .slide-frame-wrapper {
   width: var(--slide-width);
   height: var(--slide-height);
@@ -142,7 +153,11 @@ body {
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
 }
 
-/* 공통 Pill 버튼 */
+
+/* =========================
+   3. 버튼 공통 스타일
+   ========================= */
+
 .btn-pill {
   padding: 0.75rem 2rem;
   border-radius: 9999px;
@@ -155,7 +170,7 @@ body {
   justify-content: center;
 }
 
-/* 메인 버튼 */
+/* 메인(검정) 버튼 */
 .btn-primary {
   background-color: var(--color-button-main);
   color: #ffffff;
@@ -165,7 +180,7 @@ body {
   background-color: #000000;
 }
 
-/* Restart 버튼 */
+/* 포인트(노랑) 버튼 (Restart 등) */
 .btn-accent {
   background-color: var(--color-button-accent);
   color: var(--color-project-card);
@@ -175,7 +190,11 @@ body {
   filter: brightness(0.95);
 }
 
-/* 카드가 화면보다 작을 때 대응 */
+
+/* =========================
+   4. 작은 화면 대응
+   ========================= */
+
 @media (max-height: 720px) {
   .card-main,
   .card-projects {
