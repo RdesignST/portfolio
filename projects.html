@@ -21,21 +21,23 @@
 
   <div class="card-projects bg-[#242424] text-white flex flex-col px-10 pt-10 pb-8">
 
-    <!-- 상단 라인 -->
-    <div class="flex items-center justify-between mb-8 gap-4">
-      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">
-        PROJECTS
+    <!-- 상단 영역 (Projects 중앙 정렬) -->
+    <div class="relative mb-8">
+
+      <!-- 가운데 정렬된 타이틀 -->
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-center">
+        Projects
       </h1>
 
-      <div class="flex items-center gap-3">
-        
-        <!-- 첫 슬라이드로 -->
+      <!-- 오른쪽 상단 버튼들 -->
+      <div class="flex items-center gap-3 absolute right-0 top-1/2 -translate-y-1/2">
+        <!-- Restart (슬라이드 처음으로) -->
         <button
           id="firstSlideBtn"
           class="btn-pill btn-accent"
           type="button"
         >
-          First Slide
+          Restart
         </button>
 
         <!-- X 아이콘 (닫기 = 포트폴리오 홈으로) -->
@@ -43,25 +45,32 @@
            class="w-10 h-10 flex items-center justify-center bg-[#FFD27A] rounded-full hover:brightness-90 transition">
           <img src="icon_close.svg" alt="Close" class="w-5 h-5" />
         </a>
-
       </div>
     </div>
 
     <!-- 슬라이드 뷰어 영역 -->
     <div class="flex-1 flex items-center justify-center">
-
       <div class="slide-frame-wrapper bg-black">
 
-        <!-- ★ 네가 방금 보내준 iframe 그대로 삽입 ★ -->
-     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS23s4kDuy0U77YRiGIhNaxCnlwa9qQeWSJQGiTASzZQ-QyoKaD7aAXcC7C5rDo6b9d0qHUUkaa2_Fp/pubembed?start=true&loop=false&delayms=3000" frameborder="0" width="890" height="563" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        <!-- 네가 준 iframe 그대로 사용 -->
+        <iframe
+          id="slideFrame"
+          src="https://docs.google.com/presentation/d/e/2PACX-1vS23s4kDuy0U77YRiGIhNaxCnlwa9qQeWSJQGiTASzZQ-QyoKaD7aAXcC7C5rDo6b9d0qHUUkaa2_Fp/pubembed?start=true&loop=false&delayms=30000"
+          frameborder="0"
+          width="793"
+          height="505"
+          allowfullscreen="true"
+          mozallowfullscreen="true"
+          webkitallowfullscreen="true"
+          style="border:0; width:100%; height:100%;"
+        ></iframe>
 
       </div>
-
     </div>
   </div>
 
   <script>
-    // First Slide 기능
+    // Restart 버튼 → 슬라이드 처음으로
     const firstSlideBtn = document.getElementById('firstSlideBtn');
     const slideFrame = document.getElementById('slideFrame');
 
