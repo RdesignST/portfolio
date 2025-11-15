@@ -74,14 +74,14 @@ body {
 .name-main {
   display: block;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.5;
 }
 
 /* 역할 */
 .role-main {
   display: block;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 400;
   line-height: 1.5;
 }
