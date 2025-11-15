@@ -1,101 +1,62 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>포트폴리오 · 카드형</title>
-  <meta name="description" content="GitHub Pages용 심플 포트폴리오 카드 레이아웃 · 이미지 업로드 지원 (IndexedDB 보관)" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Portfolio – Rijin Choi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Inter + fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <a class="skip-link" href="#content">본문으로 건너뛰기</a>
-  <header class="site-header">
-    <div class="container row space">
-      <h1 class="logo">My <span>Portfolio</span></h1>
-      <nav class="actions">
-        <button id="btn-add" class="btn primary" aria-haspopup="dialog">+ 작품 추가</button>
-        <button id="btn-export" class="btn">내보내기</button>
-        <label class="btn file-label">
-          가져오기
-          <input id="import-input" type="file" accept="application/json" hidden />
-        </label>
-      </nav>
+
+<body class="min-h-screen bg-white flex items-center justify-center px-4 py-8">
+
+  <!-- 고정 카드: 크기는 CSS에서 관리 (card-main 클래스) -->
+  <div class="card-main bg-[#FFD27A] flex flex-col items-center justify-center">
+
+    <!-- (선택) 상단 장식 바 -->
+    <div class="w-[437px] max-w-[70%] h-3 bg-[#807C7C] rounded-full mb-10"></div>
+
+    <!-- 텍스트 블록 -->
+    <div class="text-center px-8 max-w-[640px] mx-auto">
+      <!-- 메인 타이틀 -->
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+        PORTFOLIO
+      </h1>
+
+      <!-- 이름 -->
+      <p class="text-2xl md:text-3xl font-semibold mb-4">
+        Rijin Choi
+      </p>
+
+      <!-- 소개 텍스트 -->
+      <p class="text-lg md:text-xl mb-1">
+        UI/UX Engineering, Design
+      </p>
+      <p class="text-lg md:text-xl mb-1">
+        Japanese, Korean, English
+      </p>
+      <p class="text-lg md:text-xl mb-10">
+        Languages, Tools: Figma, HTML, CSS, JavaScript, JSON
+      </p>
+
+      <!-- View Projects 버튼 -->
+      <a
+        href="projects.html"
+        class="btn-pill btn-primary"
+      >
+        View Projects
+      </a>
     </div>
-    <div class="container">
-      <div class="toolbar">
-        <input id="search" class="input" type="search" placeholder="제목·태그 검색" aria-label="검색" />
-        <div class="tag-filter" id="tagFilter" aria-live="polite"></div>
-      </div>
-    </div>
-  </header>
+  </div>
 
-  <main id="content" class="container">
-    <section id="grid" class="grid" aria-label="작품 목록">
-      <!-- JS가 카드들을 채웁니다 -->
-    </section>
-    <p id="emptyState" class="muted" hidden>아직 등록된 작품이 없어요. 오른쪽 상단의 <strong>+ 작품 추가</strong>를 눌러 첫 카드를 만들어 보세요.</p>
-  </main>
-
-  <!-- Dialog: Add/Edit Project -->
-  <dialog id="editor" class="dialog">
-    <form method="dialog" id="projectForm">
-      <header class="dialog-header">
-        <h2 id="dialogTitle">작품 추가</h2>
-        <button type="button" class="icon-btn" id="closeDialog" aria-label="닫기">✕</button>
-      </header>
-      <div class="dialog-body">
-        <div class="form-row">
-          <label for="title">제목</label>
-          <input id="title" name="title" class="input" required maxlength="120" placeholder="예: Mobile Payment App" />
-        </div>
-        <div class="form-row">
-          <label for="desc">설명</label>
-          <textarea id="desc" name="desc" class="input" rows="3" placeholder="핵심 역할, 문제·해결, 성과 등을 짧게 작성"></textarea>
-        </div>
-        <div class="form-row">
-          <label for="tags">태그 (쉼표로 구분)</label>
-          <input id="tags" name="tags" class="input" placeholder="UI, 접근성, 디자인시스템" />
-        </div>
-        <div class="form-row">
-          <label>이미지</label>
-          <div id="drop" class="drop" tabindex="0" aria-label="이미지 드래그 앤 드롭 영역. 클릭하여 파일 선택.">
-            <input id="image" type="file" accept="image/*" hidden />
-            <div class="drop-inner">
-              <div id="preview" class="preview" aria-live="polite">이미지 미리보기 없음</div>
-              <div class="drop-cta">
-                <button type="button" id="chooseImage" class="btn">파일 선택</button>
-                <p class="hint">JPG/PNG/SVG/GIF, 권장 8MB 이하</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="dialog-footer">
-        <button type="button" class="btn plain" id="deleteBtn" hidden>삭제</button>
-        <div class="spacer"></div>
-        <button type="submit" class="btn primary" id="saveBtn">저장</button>
-      </footer>
-      <input type="hidden" id="projectId" />
-    </form>
-  </dialog>
-
-  <template id="cardTemplate">
-    <article class="card">
-      <div class="thumb-wrap">
-        <img class="thumb" alt="" loading="lazy" />
-      </div>
-      <div class="card-body">
-        <h3 class="card-title"></h3>
-        <p class="card-desc"></p>
-        <div class="card-tags"></div>
-      </div>
-      <div class="card-actions">
-        <button class="btn small" data-action="edit">수정</button>
-        <button class="btn small plain" data-action="delete">삭제</button>
-      </div>
-    </article>
-  </template>
-
-  <script src="app.js"></script>
 </body>
 </html>
