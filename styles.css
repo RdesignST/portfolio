@@ -159,21 +159,23 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 109px;               /* 슬라이드 top 과 동일 */
+  height: 109px;             /* 슬라이드 top 과 동일 */
   display: flex;
-  align-items: center;          /* 상하 중앙 정렬 */
-  justify-content: center;      /* 타이틀 가로 중앙 정렬 */
+  align-items: center;       /* 세로 중앙 기준 */
+  justify-content: center;   /* 타이틀 가로 중앙 */
+  padding-top: 6px;          /* ← 타이틀을 조금 아래로 */
 }
+
 
 /* 오른쪽 버튼 그룹 */
 .projects-header-buttons {
   position: absolute;
-  right: 48px;                  /* 카드 오른쪽 여백 */
+  right: 48px;
   top: 50%;
-  transform: translateY(-50%);  /* 헤더 높이 기준 상하 중앙 */
+  transform: translateY(-40%);   /* ← -50% → -40% 로 바꿔서 살짝 아래로 */
   display: flex;
   align-items: center;
-  gap: 12px;                    /* 버튼 간격 */
+  gap: 12px;
 }
 
 /* 슬라이드 프레임 (카드 안에서 Y = 109, 중앙 정렬) */
