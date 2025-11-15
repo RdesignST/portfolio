@@ -81,7 +81,7 @@ body {
 /* PORTFOLIO 타이틀 (Bold) */
 .title-main {
   font-size: 72px;
-  font-weight: 700; /* Bold */
+  font-weight: 600; /* Bold */
   line-height: 1;
   margin: 0 0 48px 0; /* 타이틀 ~ 이름블록 48 */
 }
@@ -97,7 +97,7 @@ body {
 .name-main {
   display: block;
   font-size: 40px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.5;
 }
 
