@@ -65,7 +65,7 @@ body {
 
 /* 이름 + 역할 (하나의 텍스트 박스, line-height 150%) */
 .name-block {
- /* 역할 ~ 첫 info 줄 56 */
+  margin: 0 0 56px 0; /* 역할 ~ 첫 info 줄 56 */
   line-height: 1.5;   /* 150% */
   font-size: 0;       /* inline 요소 사이 공백 제거 */
 }
@@ -74,7 +74,7 @@ body {
 .name-main {
   display: block;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.5;
 }
 
