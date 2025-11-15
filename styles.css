@@ -174,7 +174,7 @@ body {
 /* 카드 안에서 Y = 109, 가로 960, 세로 611, 중앙 정렬 */
 .slide-frame-wrapper {
   position: absolute;
-  top: 100px;          /* 카드 상단에서 109px 아래 */
+  top: 109px;          /* 카드 상단에서 109px 아래 */
   left: 50%;           /* 카드의 50% 위치로 이동 */
   transform: translateX(-50%);  /* 정확히 가운데 맞추기 */
   width: 900px;
@@ -185,6 +185,49 @@ body {
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
 }
 
+/* Projects 카드 상단 영역 전체 */
+.projects-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px; /* 검정 상단 영역의 높이 (원하는 만큼 조정 가능) */
+  display: flex;
+  align-items: center;      /* ← 수직 가운데 정렬 */
+  justify-content: center;  /* ← 제목 가운데 */
+}
+.projects-header-buttons {
+  position: absolute;
+  right: 48px;    /* 카드 오른쪽 여백 */
+  top: 50%;
+  transform: translateY(-50%);  /* 상하 중앙 */
+  display: flex;
+  align-items: center;
+  gap: 12px;      /* 버튼 간격 */
+}
+.btn-accent {
+  background-color: var(--color-button-accent);
+  color: var(--color-project-card);
+  height: 36px;         /* ← 높이 고정 */
+  padding: 0 16px;      /* 좌우 패딩 */
+  display: flex;
+  align-items: center;  /* 수직 중앙 */
+  font-size: 15px;
+  border-radius: 18px;  /* 36px 높이에 맞는 pill */
+}
+.close-btn {
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-button-accent);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.close-btn img {
+  width: 16px;
+  height: 16px;
+}
 
 
 
