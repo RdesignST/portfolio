@@ -88,6 +88,7 @@ body {
 
 /* 아이콘 포함 정보 블록 전체 (두 줄 + 버튼 위 간격) */
 .info-block {
+  margin-top: 56px
   margin-bottom: 100px; /* 두 번째 줄 끝 ~ 버튼 100 */
 }
 
