@@ -175,7 +175,7 @@ body {
 .slide-frame-wrapper {
   position: absolute;
   top: 100px;          /* 카드 상단에서 109px 아래 */
-  
+  left: 50%;
   transform: translateX(-50%);
   width: 900px;
   height: 569px;
